@@ -175,7 +175,25 @@ First, though, the ugly lazy hack because I couldn't get Busybox to compile stat
 
 ### Diving In
 
-And then, finally, we can chroot in and see how things look. `sudo chroot . /bin/ash`. 
+And then, finally, we can chroot in and see how things look. `sudo chroot . /bin/ash`. What you see now is the prompt for the `ash` shell that's part of Busybox. Poke around until you're content that we almost have a real system.
+
+But wait! There are a few things we still need. 
+
+> I think it's neat to do all this with the busybox `vi` in the chroot, but you can exit with ctrl-d and do them with whatever text editor you want. Wooh misplaced enthusiasm!
+
+First, make these directories:
+
+`mkdir etc boot`
+
+#### /etc/passwd
+
+We'll need an /etc/passwd, with some junk in it rather than our actual password:
+
+````
+root:butts:0:0:root:/:/bin/sh
+````
+
+and then run `passwd` to put an actual hashed password there.
 
 ## references:
 
