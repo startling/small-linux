@@ -147,7 +147,7 @@ sudo make CONFIG_PREFIX=../disk install
 
 You'll see an exciting swirl of activity (Busybox's `make install` politely tells you about all the symlinks it makes, so you can notice if it missed one) and then we're done.
 
-### Diving In
+### Ugly Lazy Hacks
 
 Things are going to start getting exciting real quick.
 
@@ -172,6 +172,10 @@ First, though, the ugly lazy hack because I couldn't get Busybox to compile stat
     cp /lib/libc.so.6 lib/
     cp /lib/ld-linux.so.2 lib/
     ````
+
+### Diving In
+
+And then, finally, we can chroot in and see how things look. `sudo chroot . /bin/ash`. 
 
 ## references:
 
