@@ -1,5 +1,12 @@
 # a small linux (with qemu and busybox)
 
+Assumptions:
+* you're running linux and have the necessary build tools and qemu installed
+* you're comfortable with the command line
+* you've got about half an hour to spare
+
+Sounds good? Let's go.
+
 ## make image
 
 ````sh
