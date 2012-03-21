@@ -136,6 +136,16 @@ and poke around in `make menuconfig`; when you're done, exit and save your confi
 > 
 > Because of this, i'm going to need to do a silly lazy hack later. If you want to try compiling statically yourself, though, feel free to -- the menu option is `Busybox settings -->`, `Build Options -->`, `Build Busybox as a static binary`.
 
+And then `make` and, assuming your directory structure is the same as mine:
+
+````
+# mount our image again
+sudo mount /dev/mapper/loop0p1 ../disk
+# and then install busybox to it
+sudo make CONFIG_PREFIX=../disk install
+````
+
+You'll see an exciting swirl of activity (Busybox's `make install` politely tells you about all the symlinks it makes, so you can notice if it missed one) and then we're done.
 
 ## references:
 
