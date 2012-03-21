@@ -127,7 +127,7 @@ cd busybox-1.19.4/
 
 and poke around in `make menuconfig`; when you're done, exit and save your configuration.
 
-> _Side note_; the thing to do here would be to configure busybox to compile statically. I can't get it to do that, though; my compilation fails with a
+> __Side note__: the thing to do here would be to configure busybox to compile statically. I can't get it to do that, though; my compilation fails with a
 > 
 > ```
 > collect2: ld returned 1 exit status
