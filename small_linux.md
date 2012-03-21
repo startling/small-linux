@@ -37,9 +37,11 @@ you can `ls disk` now and see that it contains a single directory, `lost+found`,
 ### Linux and Busybox
 * _[How To Build a Minimal Linux System from Source Code][]_ by Greg O'Keefe
 * _[Building Tiny Linux Systems With Busybox][]_ by Bruce Perens
-* -[Building a Minimal Linux Image][]_ on the University of Maine High Performance Computing Wiki.
+* _[Building a Minimal Linux Image][]_ on the University of Maine High Performance Computing Wiki.
+* _[Booting/Building a Minimal Busybox based Linux distro][]_
 
 [QEMU Cheat Sheet]: http://www.mail-archive.com/linuxkernelnewbies@googlegroups.com/msg00826.html
 [How To Build a Minimal Linux System from Source Code]: http://users.cecs.anu.edu.au/~okeefe/p2b/buildMin/buildMin.html
 [Building Tiny Linux Systems With Busybox]: http://www.linuxjournal.com/article/4335
 [Building a Minimal Linux Image]: http://www.clusters.umaine.edu/wiki/index.php/Building_a_Minimal_Linux_Image
+[Booting/Building a Minimal Busybox based Linux distro]: https://revcode.wordpress.com/2012/02/25/booting-a-minimal-busybox-based-linux-distro/
