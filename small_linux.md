@@ -80,7 +80,8 @@ This looks a little imposing, so let's break it up a little:
 
 * The `-kernel bzImage` tells qemu to use the kernel we compiled. Note that this is outside of the image.
 * `-hda boots.img` tells qemu that our image file is the system's first hard drive. no big deal.
-* the `-append` options tell qemu to pass some startup options to the kernel; this helps us since we're not using a bootloader yet. `root=/dev/sda1` says to use the first partition of the first drive (the one we formatted before); `console=ttyS0` says to use the serial port as the console. This handily lets us use the `-nographic` option and get the prompt right in our terminal.
+* the `-append` options tell qemu to pass some startup options to the kernel; this helps us since we're not using a bootloader yet. The first of these, `root=/dev/sda1` says to use the first partition of the first drive (the one we formatted before).
+* The second startup option, `console=ttyS0` says to use the serial port as the console. This handily lets us use the `-nographic` option and get the prompt right in our terminal.
 
 Anyway, this is the kind of output you should get:
 
