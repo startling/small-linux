@@ -134,7 +134,7 @@ and poke around in `make menuconfig`; when you're done, exit and save your confi
 > make: *** [busybox_unstripped] Error 1
 > ````
 > 
-> Because of this, i'm going to need to do a silly lazy hack later. If you want to try compiling statically yourself, though, feel free to -- the menu option is `Busybox settings --> Build Options --> Build Busybox as a static binary`.
+> Because of this, i'm going to need to do a silly lazy hack later. If you want to try compiling statically yourself, though, feel free to -- the menu option is `Busybox settings -->`, `Build Options -->`, `Build Busybox as a static binary`.
 
 
 ## references:
