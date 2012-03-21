@@ -117,6 +117,26 @@ Now, we could install [sysvinit][] and [GNU Coreutils][] and bash or something t
 [Linux From Scratch's instructions]: http://www.linuxfromscratch.org/lfs/view/stable/
 [a thousand different things]: http://www.busybox.net/downloads/BusyBox.html
 
+So download Busybox, untar/unzip it, and `cd` in:
+
+````sh
+wget http://www.busybox.net/downloads/busybox-1.19.4.tar.bz2
+tar xjf busybox-1.19.4.tar.bz2
+cd busybox-1.19.4/
+````
+
+and poke around in `make menuconfig`; when you're done, exit and save your configuration.
+
+(_Side note_; the thing to do here would be to configure busybox to compile statically. I can't get it to do that, though; my compilation fails with a
+
+```
+collect2: ld returned 1 exit status
+make: *** [busybox_unstripped] Error 1
+````
+
+Because of this, i'm going to need to do a silly lazy hack later. If you want to try compiling statically yourself, though, feel free to -- the menu option is `Busybox settings --> Build Options --> Build Busybox as a static binary`.)
+
+
 ## references:
 
 * Allan Stephen's _[QEMU Cheat Sheet][]_ on the linuxkernelnewbies mailing list.
