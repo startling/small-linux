@@ -107,6 +107,16 @@ So, what went wrong? Well, if you're familiar with the boot process (if you aren
 
 [From PowerUp to Bash Prompt]: http://www.linuxdoc.org/HOWTO/From-PowerUp-To-Bash-Prompt-HOWTO-6.html
 
+### Busybox
+
+Now, we could install [sysvinit][] and [GNU Coreutils][] and bash or something to get started, essentially taking a page out of [Linux From Scratch's instructions][]. But that's a pain and we have more important things to learn than `./configure; make; make install`. Instead, we'll install [busybox][] -- a single tiny executable that can be called as [a thousand different things][] -- `ash` and `init` and `which` and `wget` and so on -- and we'll get our system self-hosting _after_ we have it booting.
+
+[sysvinit]: https://savannah.nongnu.org/projects/sysvinit
+[GNU Coreutils]: http://www.gnu.org/software/coreutils/
+[busybox]: http://www.busybox.net/
+[Linux From Scratch's instructions]: http://www.linuxfromscratch.org/lfs/view/stable/
+[a thousand different things]: http://www.busybox.net/downloads/BusyBox.html
+
 ## references:
 
 * Allan Stephen's _[QEMU Cheat Sheet][]_ on the linuxkernelnewbies mailing list.
