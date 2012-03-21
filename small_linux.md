@@ -147,6 +147,32 @@ sudo make CONFIG_PREFIX=../disk install
 
 You'll see an exciting swirl of activity (Busybox's `make install` politely tells you about all the symlinks it makes, so you can notice if it missed one) and then we're done.
 
+### Diving In
+
+Things are going to start getting exciting real quick.
+
+First, though, the ugly lazy hack because I couldn't get Busybox to compile statically:
+
+* go back into the mounted directory -- `cd ../disk`
+* look to see what dynamic libraries busybox needs with `ldd bin/busybox`. I get:
+    
+    ````
+        linux-gate.so.1 =>  (0xb76df000)
+        libm.so.6 => /lib/libm.so.6 (0xb76a9000)
+        libc.so.6 => /lib/libc.so.6 (0xb7507000)
+        /lib/ld-linux.so.2 (0xb76e0000)
+    ````
+
+    The first of these (`linux-gate.so.1`) is what's know as a 'virtual shared dynamic object'. Basically, it's a fake library provided by the kernel. We can ignore it -- the rest are real dynamic libraries.
+
+* This is the lazy part. We *could* build a libc ourselves for the system; instead, we'll copy the dynamic libraries we need from our host system:
+    
+    ````
+    cp /lib/libm.so.6 lib/
+    cp /lib/libc.so.6 lib/
+    cp /lib/ld-linux.so.2 lib/
+    ````
+
 ## references:
 
 * Allan Stephen's _[QEMU Cheat Sheet][]_ on the linuxkernelnewbies mailing list.
