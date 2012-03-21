@@ -39,7 +39,7 @@ sudo mount /dev/mapper/loop0p1 disk
 
 you can `ls disk` now and see that it contains a single directory, `lost+found`, which is made when you format as ext.
 
-## Linux
+## Building Linux
 
 First thing to do is download the linux kernel source:
 
@@ -54,6 +54,27 @@ cd linux-3.2.12/
 
 Building the linux kernel from source can be slightly complicated; luckily, the default options work fine for us. You can `make menuconfig` and poke around a little bit to see what choices we have, and then exit and save your configuration. `make all` builds the entire thing; go and make some tea or something while you wait for it.
 
+Once you're done, copy the image to the directory _above_ the mounted image for now:
+
+`cp arch/x86/boot/bzImage ../`
+
+and install the kernel headers on the disk, too:
+
+`sudo make INSTALL_MOD_PATH=../disk modules_install`
+
+Now `cd ..` and survey all that we have made.
+
+## Figuring Out How To Boot
+
+We're going to use qemu to look into booting are disk real quick. Unmount the disk image first (`sudo umount /dev/mapper/loop0p1`), and then choose one of the following:
+
+If you're on Arch Linux,
+
+`qemu-system-i386 -kernel bzImage -hda boots.img -append "root=/dev/sda1 console=ttyS0" -nographic`.
+
+Otherwise,
+
+`qemu -kernel bzImage -hda boots.img -append "root=/dev/sda1 console=ttyS0" -nographic`.
 
 ## references:
 
