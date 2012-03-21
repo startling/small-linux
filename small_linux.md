@@ -80,7 +80,23 @@ This looks a little imposing, so let's break it up a little:
 
 * The `-kernel bzImage` tells qemu to use the kernel we compiled. Note that this is outside of the image.
 * `-hda boots.img` tells qemu that our image file is the system's first hard drive. no big deal.
-* the `-append` options tell qemu to pass some startup options to the kernel. `root=/dev/sda1` says to use the first partition of the first drive (the one we formatted before); `console=ttyS0` says to use the serial port as the console. This handily lets us use the `-nographic` option and get the prompt right in our terminal.
+* the `-append` options tell qemu to pass some startup options to the kernel; this helps us since we're not using a bootloader yet. `root=/dev/sda1` says to use the first partition of the first drive (the one we formatted before); `console=ttyS0` says to use the serial port as the console. This handily lets us use the `-nographic` option and get the prompt right in our terminal.
+
+Anyway, this is the kind of output you should get:
+
+````
+[    6.581884] Kernel panic - not syncing: No init found.  Try passing init= option to kernel. See Linux Documentation/init.txt for guidance.
+[    6.592880] Pid: 1, comm: swapper/0 Not tainted 3.2.12 #1
+[    6.597796] Call Trace:
+[    6.600915]  [<c15ff2f7>] ? printk+0x18/0x1a
+[    6.605454]  [<c15ff1e9>] panic+0x57/0x14d
+[    6.609289]  [<c15fe0cc>] init_post+0xa9/0xa9
+[    6.613390]  [<c186d843>] kernel_init+0x136/0x136
+[    6.617659]  [<c186d70d>] ? start_kernel+0x2e1/0x2e1
+[    6.621881]  [<c160e0f6>] kernel_thread_helper+0x6/0xd
+````
+
+Our first kernel panic! You should take a picture.
 
 ## references:
 
