@@ -6,6 +6,8 @@ Assumptions:
 * you're comfortable with the command line
 * you've got about half an hour to spare
 
+I'm running this on arch, but I've tried to be distro-agnostic; still, you may have to improvise the necessary incantations. If you find anything confusing or wrong, feel free to email me: <tdixon51793@gmail.com>.
+
 Sounds good? Let's go.
 
 ## make image
@@ -24,7 +26,7 @@ type `a` and then `1` to make partition the first partition bootable. finally, t
 
 ````sh
 # set up a loopback device
-sudo losetup -f boots.img // maybe different outside of arch? research
+sudo losetup -f boots.img # maybe different outside of arch? research
 # kpartx the partitions
 sudo kpartx -a /dev/loop0
 # there should now exist a /dev/mapper/loop0p1 or similar
