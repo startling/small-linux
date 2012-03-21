@@ -29,6 +29,22 @@ sudo mount /dev/mapper/loop0p1 disk
 
 you can `ls disk` now and see that it contains a single directory, `lost+found`, which is made when you format as ext.
 
+## Linux
+
+First thing to do is download the linux kernel source:
+
+`wget https://www.kernel.org/pub/linux/kernel/v3.0/linux-3.2.12.tar.bz2`
+
+and then untar/unbzip it and cd in:
+
+````sh
+tar xjf linux-3.2.12.tar.bz2
+cd linux-3.2.12/
+````
+
+Building the linux kernel from source can be slightly complicated; luckily, the default options work fine for us. You can `make menuconfig` and poke around a little bit to see what choices we have, and then exit and save your configuration. `make all` builds the entire thing; go and make some tea or something while you wait for it.
+
+
 ## references:
 
 * Allan Stephen's _[QEMU Cheat Sheet][]_ on the linuxkernelnewbies mailing list.
