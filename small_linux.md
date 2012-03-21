@@ -1,16 +1,18 @@
+# a small linux (with qemu and busybox)
+
 ## make image
 
 ````sh
 qemu-img create -f raw boots.img 4G
 ````
 
-# format and partition
+## format and partition
 
 `fdisk boots.img`
 type `n` and then go with the defaults to make a new primary first partition taking the whole disk.
 type `a` and then `1` to make partition the first partition bootable. finally, type `w` to write to the disk image and quit.
 
-# mount partitions
+## mount partitions
 
 ````sh
 # set up a loopback device
