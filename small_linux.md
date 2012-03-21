@@ -96,7 +96,15 @@ Anyway, this is the kind of output you should get:
 [    6.621881]  [<c160e0f6>] kernel_thread_helper+0x6/0xd
 ````
 
-Our first kernel panic! You should take a picture.
+Our first kernel panic! How cute! You should take a picture.
+
+## Calming Down The Kernel
+
+First of all, the only real way to quit qemu after a kernel panic i've found is `killall qemu` or `killall qemu-system-i386` in another shell. Seems drastic, I know, but we'll resurrect the poor little guy in a moment.
+
+So, what went wrong? Well, if you're familiar with the boot process (if you aren't, _[From PowerUp To Bash Prompt][]_ is pretty good), the kernel starts up, gets everything ready, and then hands off control to a binary named `init`. It couldn't find such a binary (perhaps because none exists yet? more research is needed) and so puked all over the kitchen floor. Fun.
+
+[From PowerUp to Bash Prompt]: http://www.linuxdoc.org/HOWTO/From-PowerUp-To-Bash-Prompt-HOWTO-6.html
 
 ## references:
 
