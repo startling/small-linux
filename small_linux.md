@@ -34,10 +34,12 @@ you can `ls disk` now and see that it contains a single directory, `lost+found`,
 ### QEMU
 * Allan Stephen's _[QEMU Cheat Sheet][]_ on the linuxkernelnewbies mailing list.
 
-### Linux
+### Linux and Busybox
 * _[How To Build a Minimal Linux System from Source Code][]_ by Greg O'Keefe
-
-### Busybox
+* _[Building Tiny Linux Systems With Busybox][]_ by Bruce Perens
+* -[Building a Minimal Linux Image][]_ on the University of Maine High Performance Computing Wiki.
 
 [QEMU Cheat Sheet]: http://www.mail-archive.com/linuxkernelnewbies@googlegroups.com/msg00826.html
 [How To Build a Minimal Linux System from Source Code]: http://users.cecs.anu.edu.au/~okeefe/p2b/buildMin/buildMin.html
+[Building Tiny Linux Systems With Busybox]: http://www.linuxjournal.com/article/4335
+[Building a Minimal Linux Image]: http://www.clusters.umaine.edu/wiki/index.php/Building_a_Minimal_Linux_Image
