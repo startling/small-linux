@@ -31,8 +31,13 @@ you can `ls disk` now and see that it contains a single directory, `lost+found`,
 
 ## references:
 
+### QEMU
 * Allan Stephen's _[QEMU Cheat Sheet][]_ on the linuxkernelnewbies mailing list.
+
+### Linux
 * _[How To Build a Minimal Linux System from Source Code][]_ by Greg O'Keefe
+
+### Busybox
 
 [QEMU Cheat Sheet]: http://www.mail-archive.com/linuxkernelnewbies@googlegroups.com/msg00826.html
 [How To Build a Minimal Linux System from Source Code]: http://users.cecs.anu.edu.au/~okeefe/p2b/buildMin/buildMin.html
