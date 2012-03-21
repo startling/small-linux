@@ -28,3 +28,9 @@ sudo mount /dev/mapper/loop0p1 disk
 ````
 
 you can `ls disk` now and see that it contains a single directory, `lost+found`, which is made when you format as ext.
+
+## references:
+
+* Allan Stephen's _[QEMU Cheat Sheet][]_ on the linuxkernelnewbies mailing list.
+
+[QEMU Cheat Sheet]: http://www.mail-archive.com/linuxkernelnewbies@googlegroups.com/msg00826.html
