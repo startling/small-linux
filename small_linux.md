@@ -281,6 +281,8 @@ and on most other distros:
 
 Hopefully you'll be greeted with a thunderstorm of kernel activity and then a prompt like `(none) login`. Enter `root` and the password you set earlier and you're home free.
 
+(P.S. -- Busybox doesn't have `shutdown -h`; instead, use `poweroff` once you're done.)
+
 ## Cleaning Up
 
 There are a few minor annoyances here:
@@ -290,10 +292,6 @@ There are a few minor annoyances here:
 (todo)
 
 ### Networking
-
-(todo)
-
-### Shutting Down Nicely
 
 (todo)
 
