@@ -1,4 +1,4 @@
-# a small linux (with qemu and busybox)
+# a small linux (with qemu and Busybox)
 
 Assumptions:
 
@@ -113,11 +113,11 @@ So, what went wrong? Well, if you're familiar with the boot process (if you aren
 
 ### Busybox
 
-Now, we could install [sysvinit][] and [GNU Coreutils][] and bash or something to get started, essentially taking a page out of [Linux From Scratch's instructions][]. But that's a pain and we have more important things to learn than `./configure; make; make install`. Instead, we'll install [busybox][] -- a single tiny executable that can be called as [a thousand different things][] -- `ash` and `init` and `which` and `wget` and so on -- and we'll get our system self-hosting _after_ we have it booting.
+Now, we could install [sysvinit][] and [GNU Coreutils][] and bash or something to get started, essentially taking a page out of [Linux From Scratch's instructions][]. But that's a pain and we have more important things to learn than `./configure; make; make install`. Instead, we'll install [Busybox][] -- a single tiny executable that can be called as [a thousand different things][] -- `ash` and `init` and `which` and `wget` and so on -- and we'll get our system self-hosting _after_ we have it booting.
 
 [sysvinit]: https://savannah.nongnu.org/projects/sysvinit
 [GNU Coreutils]: http://www.gnu.org/software/coreutils/
-[busybox]: http://www.busybox.net/
+[Busybox]: http://www.busybox.net/
 [Linux From Scratch's instructions]: http://www.linuxfromscratch.org/lfs/view/stable/
 [a thousand different things]: http://www.busybox.net/downloads/BusyBox.html
 
@@ -131,7 +131,7 @@ cd busybox-1.19.4/
 
 and poke around in `make menuconfig`; when you're done, exit and save your configuration.
 
-> __Side note__: the thing to do here would be to configure busybox to compile statically. I can't get it to do that, though; my compilation fails with a
+> __Side note__: the thing to do here would be to configure Busybox to compile statically. I can't get it to do that, though; my compilation fails with a
 > 
 > ```
 > collect2: ld returned 1 exit status
@@ -145,7 +145,7 @@ And then `make` and, assuming your directory structure is the same as mine:
 ````
 # mount our image again
 sudo mount /dev/mapper/loop0p1 ../disk
-# and then install busybox to it
+# and then install Busybox to it
 sudo make CONFIG_PREFIX=../disk install
 ````
 
@@ -158,7 +158,7 @@ Things are going to start getting exciting real quick.
 First, though, the ugly lazy hack because I couldn't get Busybox to compile statically:
 
 * go back into the mounted directory -- `cd ../disk`
-* look to see what dynamic libraries busybox needs with `ldd bin/busybox`. I get:
+* look to see what dynamic libraries Busybox needs with `ldd bin/busybox`. I get:
     
     ````
         linux-gate.so.1 =>  (0xb76df000)
@@ -183,7 +183,7 @@ And then, finally, we can chroot in and see how things look. `sudo chroot . /bin
 
 But wait! There are a few things we still need. 
 
-> I think it's neat to do all this with the busybox `vi` in the chroot, but you can exit with ctrl-d and do them with whatever text editor you want. Wooh misplaced enthusiasm!
+> I think it's neat to do all this with the Busybox `vi` in the chroot, but you can exit with ctrl-d and do them with whatever text editor you want. Wooh misplaced enthusiasm!
 
 First, make these directories:
 
@@ -278,7 +278,7 @@ and on most other distros:
 
 `qemu -kernel bzImage -hda boots.img -append "root=/dev/sda1 console=ttyS0" -nographic`
 
-Hopefully you'll be greeted with a thunderstorm of kernel activity and then a prompt like `(none) login`. Enter the `root` and the password you set earlier and you're home free.
+Hopefully you'll be greeted with a thunderstorm of kernel activity and then a prompt like `(none) login`. Enter `root` and the password you set earlier and you're home free.
 
 ## references:
 
