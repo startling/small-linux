@@ -293,6 +293,10 @@ There are a few minor annoyances here:
 
 (todo)
 
+### Shutting Down Nicely
+
+(todo)
+
 ### hostname
 
 The reason the login prompt is `(none) login` is that we haven't set a hostname for the system. `hostname boots` or whatever will set the hostname for one session; put it in your `/etc/start` for it to persist.
