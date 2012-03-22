@@ -10,21 +10,22 @@ I'm running this on arch, but I've tried to be distro-agnostic; still, you may h
 
 Sounds good? Let's go.
 
-## make image
+## Making the Image
+
+`qemu-img` is a tool for making disk images that ships with `qemu`; we'll use it here to make a 4GB raw image file.
 
 ````sh
 qemu-img create -f raw boots.img 4G
 ````
 
-### format and partition
+### Format and Partition
 
 We'll use `fdisk` to format the image.
 
 `fdisk boots.img`
 type `n` and then go with the defaults to make a new primary first partition taking the whole disk.
 type `a` and then `1` to make partition the first partition bootable. finally, type `w` to write to the disk image and quit.
-
-### mount partitions
+### Mounting the Partition
 
 We're using two slightly obscure tools here -- `losetup`, which creates what fake block devices from files, and `kpartx` (which you may need to install) which creates device files for each partition of a device.
 
