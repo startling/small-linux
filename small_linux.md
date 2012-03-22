@@ -16,16 +16,20 @@ Sounds good? Let's go.
 qemu-img create -f raw boots.img 4G
 ````
 
-## format and partition
+### format and partition
+
+We'll use `fdisk` to format the image.
 
 `fdisk boots.img`
 type `n` and then go with the defaults to make a new primary first partition taking the whole disk.
 type `a` and then `1` to make partition the first partition bootable. finally, type `w` to write to the disk image and quit.
 
-## mount partitions
+### mount partitions
+
+We're using two slightly obscure tools here -- `losetup`, which creates what fake block devices from files, and `kpartx` (which you may need to install) which creates device files for each partition of a device.
 
 ````sh
-# set up a loopback device
+# set up a loop device
 sudo losetup -f boots.img # maybe different outside of arch? research
 # kpartx the partitions
 sudo kpartx -a /dev/loop0
@@ -219,7 +223,7 @@ We don't mount the root partition here becase we'll do it in our start script.
 
 Inittabs for Busybox are a little unconventional -- they completely ignore runlevels and use the `id` field for controlling devices (defaulting to /dev/console). We'll do two main things here: start a script we'll write in a moment (`/etc/start`) and spawn a handful of ttys.
 
-````inittab
+````
 # simple start script
 ::sysinit:/etc/start
 
