@@ -260,6 +260,22 @@ mount -o rw,remount /
 mdev -s
 ````
 
+Afterwards, `sudo chmod +x etc/start`, too, in order to make it executable.
+
+## Booting For Real
+
+So. Here's the moment of truth. Unmount the disk (`sudo umount /dev/mapper/loop0p1`, but you already knew that) and fire up qemu again.
+
+Again, on Arch:
+
+`qemu-system-i386 -kernel bzImage -hda boots.img -append "root=/dev/sda1 console=ttyS0" -nographic`
+
+and on most other distros:
+
+`qemu -kernel bzImage -hda boots.img -append "root=/dev/sda1 console=ttyS0" -nographic`
+
+Hopefully you'll be greeted with a thunderstorm of kernel activity and then a prompt like `(none) login`. Enter the `root` and the password you set earlier and you're home free.
+
 ## references:
 
 * Allan Stephen's _[QEMU Cheat Sheet][]_ on the linuxkernelnewbies mailing list.
