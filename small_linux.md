@@ -183,17 +183,82 @@ But wait! There are a few things we still need.
 
 First, make these directories:
 
-`mkdir etc boot`
+`mkdir etc boot dev proc sys tmp`
 
 #### /etc/passwd
 
-We'll need an /etc/passwd, with some junk in it rather than our actual password:
+We'll need an `/etc/passwd`, with some junk in it because we don't feel like hand-hashing a password.
 
 ````
 root:butts:0:0:root:/:/bin/sh
 ````
 
-and then run `passwd` to put an actual hashed password there.
+and then run `passwd` (while `chroot`ed) to put an actual hashed password there.
+
+#### /etc/group
+`/etc/group` is actually pretty boring.
+
+````
+root:x:0:
+````
+
+#### /etc/fstab
+
+Our `/etc/fstab` can be real simple since we only have one partition:
+
+````
+# /etc/fstab: static file system information                                                           
+# <file system> <dir>   <type>  <options>   <dump>  <pass>
+tmpfs /tmp tmpfs nodev,nosuid 0 0
+````
+
+We don't mount the root partition here becase we'll do it in our start script.
+
+
+#### /etc/inittab
+
+Inittabs for Busybox are a little unconventional -- they completely ignore runlevels and use the `id` field for controlling devices (defaulting to /dev/console). We'll do two main things here: start a script we'll write in a moment (`/etc/start`) and spawn a handful of ttys.
+
+````
+# simple start script
+::sysinit:/etc/start
+
+# getty for login over console/the serial port
+::respawn:/sbin/getty -L ttyS0 9600 linux
+
+# gettys for tty1-4
+tty1::respawn:/sbin/getty 38400 tty1
+tty2::respawn:/sbin/getty 38400 tty2
+tty3::respawn:/sbin/getty 38400 tty3
+tty4::respawn:/sbin/getty 38400 tty4
+
+# stuff to do before rebooting
+::ctrlaltdel:/bin/umount -a -r
+::ctrlaltdel:/sbin/swapoff
+
+# adapted from http://www.spblinux.de/2.0/doc/init.html
+````
+
+#### /etc/start
+
+A lot of these guides have tedious little interludes where they either use devfs (which is deprecated and dead) or or static device files made with `mknod`. We don't have to do that; Busybox comes with this great little utility called `mdev`. You can read more about it in the `docs/mdev.txt` in the Busybox source.
+
+````
+#!/bin/sh
+
+# mount /proc
+mount -t proc proc /proc
+# mount /sys
+mount -t sysfs sysfs /sys
+# set mdev as the kernel's hotplug for dynamic updaes
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+# mount all the things in /etc/fstab
+mount -s
+# remount the root partition as read-write
+mount -o rw,remount /
+# mount devices with mdev
+mdev -s
+````
 
 ## references:
 
@@ -202,9 +267,11 @@ and then run `passwd` to put an actual hashed password there.
 * _[Building Tiny Linux Systems With Busybox][]_ by Bruce Perens
 * _[Building a Minimal Linux Image][]_ on the University of Maine High Performance Computing Wiki.
 * _[Booting/Building a Minimal Busybox based Linux distro][]_
+* _[Understanding Busybox Inittab][]_
 
 [QEMU Cheat Sheet]: http://www.mail-archive.com/linuxkernelnewbies@googlegroups.com/msg00826.html
 [How To Build a Minimal Linux System from Source Code]: http://users.cecs.anu.edu.au/~okeefe/p2b/buildMin/buildMin.html
 [Building Tiny Linux Systems With Busybox]: http://www.linuxjournal.com/article/4335
 [Building a Minimal Linux Image]: http://www.clusters.umaine.edu/wiki/index.php/Building_a_Minimal_Linux_Image
 [Booting/Building a Minimal Busybox based Linux distro]: https://revcode.wordpress.com/2012/02/25/booting-a-minimal-busybox-based-linux-distro/
+[Understanding Busybox Inittab]: http://linuxembedded.blogspot.com/2006/11/understanding-busybox-inittab.html
