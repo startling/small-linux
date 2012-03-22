@@ -280,6 +280,15 @@ and on most other distros:
 
 Hopefully you'll be greeted with a thunderstorm of kernel activity and then a prompt like `(none) login`. Enter `root` and the password you set earlier and you're home free.
 
+## Cleaning Up
+
+There are a few minor annoyances here:
+
+### hostname
+
+The reason the login prompt is `(none) login` is that we haven't set a hostname for the system. `hostname boots` or whatever will set the hostname for one session; put it in your `/etc/start` for it to persist.
+
+
 ## references:
 
 * Allan Stephen's _[QEMU Cheat Sheet][]_ on the linuxkernelnewbies mailing list.
