@@ -57,7 +57,7 @@ tar xjf linux-3.2.12.tar.bz2
 cd linux-3.2.12/
 ````
 
-Building the linux kernel from source can be slightly complicated; luckily, the default options work fine for us. You can `make menuconfig` and poke around a little bit to see what choices we have, and then exit and save your configuration. `make all` builds the entire thing; go and make some tea or something while you wait for it.
+Building the linux kernel from source can be slightly complicated; luckily, the default options work fine for us. You can `make menuconfig` (you may want to turn of `Kernel Hacking -->` `Kernel Debugging` to avoid `x used greatest stack depth n` messages) and poke around a little bit to see what choices we have, and then exit and save your configuration. `make all` builds the entire thing; go and make some tea or something while you wait for it.
 
 Once you're done, copy the image to the directory _above_ the mounted image for now:
 
