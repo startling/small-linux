@@ -365,6 +365,8 @@ exit 0
 # adapted from http://lists.debian.org/debian-boot/2002/11/msg00500.html
 ````
 
+and make sure you `chmod +x` it.
+
 You can test this by just running `udhcpc` or `udhcpc -i eth0` (if you want to be more specific). I get output like this:
 
 ````
