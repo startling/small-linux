@@ -400,7 +400,7 @@ And if you have a web server (or even just python) on the host machine...
 # make a little index.html
 echo "hello from the qemu host" > index.html
 # start python's SimpleHTTPServer
-python -m SimpleHTTPServer # or python -m http.server under python 3
+python -m SimpleHTTPServer 80 # or python -m http.server 80 under python 3
 ````
 
 and, while that's running, you should be able to `wget 10.0.2.2` on the guest.
