@@ -211,7 +211,7 @@ root:x:0:
 
 Our `/etc/fstab` can be real simple since we only have one partition:
 
-````
+````fstab
 # /etc/fstab: static file system information                                                           
 # <file system> <dir>   <type>  <options>   <dump>  <pass>
 tmpfs /tmp tmpfs nodev,nosuid 0 0
@@ -224,7 +224,7 @@ We don't mount the root partition here becase we'll do it in our start script.
 
 Inittabs for Busybox are a little unconventional -- they completely ignore runlevels and use the `id` field for controlling devices (defaulting to /dev/console). We'll do two main things here: start a script we'll write in a moment (`/etc/start`) and spawn a handful of ttys.
 
-````
+````inittab
 # simple start script
 ::sysinit:/etc/start
 
@@ -248,7 +248,7 @@ tty4::respawn:/sbin/getty 38400 tty4
 
 A lot of these guides have tedious little interludes where they either use devfs (which is deprecated and dead) or or static device files made with `mknod`. We don't have to do that; Busybox comes with this great little utility called `mdev`. You can read more about it in the `docs/mdev.txt` in the Busybox source.
 
-````
+````sh
 #!/bin/sh
 
 # mount /proc
