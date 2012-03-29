@@ -294,9 +294,9 @@ The reason the login prompt is `(none) login` is that we haven't set a hostname 
 
 ## Going Further
 
-* [Networking](/networking.md)
+* [Networking](networking.md)
 * Build Tools (todo)
-* Kernel and Bootloader
+* Kernel and Bootloader (todo)
 
 ## references:
 
