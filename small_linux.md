@@ -336,7 +336,7 @@ case $1 in
         # configure the interface with the given ip, broadcast address, and netmask
         ifconfig $interface $ip ${broadcast:+broadcast $broadcast} ${subnet:+netmask $subnet}
 
-        # for each given gateway, overwrite the defaults??? hell if I know.
+        # add each given gateway
         for i in $router; do
                 route add default gw $i dev $interface
         done
