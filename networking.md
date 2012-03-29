@@ -1,4 +1,4 @@
-# Networking
+## Networking
 
 I wish there was a nice way to prove networking works under qemu; unfortunately, bridging internet access to a qemu guest is kind of painful. Instead we'll go through a lot of effort just to ping our host machine (but also get dhcp running).
 
