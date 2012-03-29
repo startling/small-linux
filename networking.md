@@ -37,7 +37,7 @@ round-trip min/avg/max = 2.092/8.308/36.247 ms
 
 And if you have a web server (or even just python) on the host machine...
 
-````
+````sh
 # make a little index.html
 echo "hello from the qemu host" > index.html
 # start python's SimpleHTTPServer
