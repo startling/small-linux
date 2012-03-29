@@ -224,7 +224,7 @@ We don't mount the root partition here becase we'll do it in our start script.
 
 Inittabs for Busybox are a little unconventional -- they completely ignore runlevels and use the `id` field for controlling devices (defaulting to /dev/console). We'll do two main things here: start a script we'll write in a moment (`/etc/start`) and spawn a handful of ttys.
 
-````inittab
+````sh
 # simple start script
 ::sysinit:/etc/start
 
