@@ -63,9 +63,16 @@ Once you're done, copy the image to the directory _above_ the mounted image for 
 
 `cp arch/x86/boot/bzImage ../`
 
-and install the kernel headers on the disk, too:
+and install the kernel modules on the disk, too:
 
 `sudo make INSTALL_MOD_PATH=../disk modules_install`
+
+We might need the kernel headers, too:
+
+````sh
+make headers_check`
+sudo make INSTALL_HDR_PATH=../disk headers_install`
+````
 
 Now `cd ..` and survey all that we have made.
 
